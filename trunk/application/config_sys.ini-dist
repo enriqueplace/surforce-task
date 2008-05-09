@@ -1,3 +1,5 @@
+debug       = on
+
 [database]
 db.adapter = PDO_MYSQL
 db.config.host = localhost
