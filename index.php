@@ -12,6 +12,8 @@ set_include_path(
     '.' .
     PATH_SEPARATOR . './library/' .
     PATH_SEPARATOR . './application/' .
+    PATH_SEPARATOR . './application/models/' .
+    PATH_SEPARATOR . './public/' .
     PATH_SEPARATOR . get_include_path()
 );
 
@@ -23,9 +25,8 @@ set_include_path(
 include "Zend/Loader.php";
 Zend_Loader::registerAutoload();
 
-/**
- * Configuración del sistema que será leída del config.ini
- */
+
+/** CONFIGURACION **/
 $config_sys = new Zend_Config_Ini('./application/config_sys.ini');
 $config_app = new Zend_Config_Ini('./application/config_app.ini');
 
@@ -36,6 +37,11 @@ $registry = Zend_Registry::getInstance();
 $registry->set('config_sys', $config_sys);
 $registry->set('config_app', $config_app);
 $registry->set('base_path', realpath('.') );
+$registry->set('debug', $config_sys->debug);
+
+// Start Session
+$session = new Zend_Session_Namespace('surforce-task');
+$registry->set('session', $session);
 
 /**
  * Zend_Layout
