@@ -9,7 +9,7 @@
 
 require_once 'Zend/Controller/Action.php';
 
-class ErrorController extends Zend_Controller_Action
+class ErrorController extends Ztask_Controller_Action
 {
 
     /**

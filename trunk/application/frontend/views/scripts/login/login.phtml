@@ -1,0 +1,16 @@
+<div id="login-form">
+	    <form id="form-login" action="<?php echo $this->baseUrl ?>/frontend/login/login" method="post">
+	        <div>
+	            <label for="usuario">Usuario: </label>
+	            <input type="text" id="usuario" name="usuario" value=""/>
+	        </div>
+	        <div>
+	            <label for="password">Clave: </label>
+	            <input type="password" id="password" name="password" value=""/>
+	        </div>
+	        <div id="formbutton">
+	            <input type="submit" name="login" value="Iniciar Sesión" onclick="login_validar();" />
+	        </div>
+	    </form>
+
+	</div>

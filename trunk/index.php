@@ -88,8 +88,8 @@ $controller->setControllerDirectory('./application/default/controllers');
  * ya que se agregó temporalmente a surforce-base para poder hacer pruebas.
  */
 
-// Módulos de surforce-modules
-$controller->addControllerDirectory('./application/noticias/controllers', 'noticias');
+// Módulos de surforce-task
+$controller->addControllerDirectory('./application/frontend/controllers', 'frontend');
 //$controller->addControllerDirectory('./application/contacto/controllers', 'contacto');
 //$controller->addControllerDirectory('./application/faqs/controllers', 'faqs');
 //$controller->addControllerDirectory('./application/paginas/controllers', 'paginas');
