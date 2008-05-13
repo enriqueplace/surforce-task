@@ -1,10 +1,9 @@
 <?php
-require_once './application/frontend/models/Tasks.php';
-
-class Frontend_IndexController extends Zsurforce_Generic_Controller{
-
+class Frontend_IndexController extends Ztask_Generic_Controller{
+	const MODELS_DIR = './application/frontend/models/';
 	function indexAction()
 	{
+		Zend_Loader::loadClass('Tasks', self::MODELS_DIR );
 		$tasks = new Tasks();
 		$where = array();
 		$order = "";

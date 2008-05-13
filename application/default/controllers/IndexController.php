@@ -17,20 +17,11 @@
  * proyecto base no sea dependiente de librería.
 **/
 //class IndexController extends Zsurforce_Generic_Controller
-class IndexController extends Zend_Controller_Action
+class IndexController extends Ztask_Generic_Controller
 {
 	/**
 	 * The default action - show the home page
 	 */
-
-	public function init(){
-		$this->initView();
-        $this->view->baseUrl = $this->_request->getBaseUrl();
-        $this->view->addBasePath('./html/','');
-        $this->view->addHelperPath('./application/views/helpers/', 'Helper');
-        $this->registry = Zend_Registry::getInstance();
-	}
-
     public function indexAction()
     {
         // TODO Auto-generated IndexController::indexAction() action
