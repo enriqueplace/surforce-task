@@ -3,12 +3,12 @@ class Frontend_LoginController extends Ztask_Generic_Controller
 {
     function indexAction()
     {
-        $this->_redirect('/');
+        $this->_redirect('/frontend');
     }
     function logoutAction()
     {
         Zend_Auth::getInstance()->clearIdentity();
-        $this->_redirect('/');
+        $this->_redirect('/frontend');
     }
     function loginAction()
     {
@@ -48,7 +48,7 @@ class Frontend_LoginController extends Ztask_Generic_Controller
                 if ($result->isValid()) {
                     $data = $autAdapter->getResultRowObject(null, 'password');
                     $aut->getStorage()->write($data);
-                    $this->_redirect('/');
+                    $this->_redirect('/frontend');
                 } else {
                     $this->view->message = $info->sitio->autenticacion->login->msgUserPassIncorrectos;
                 }
