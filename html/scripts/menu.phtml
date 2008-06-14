@@ -4,8 +4,10 @@
 				<li><a href="<?php echo $this->baseUrl ?>/frontend/">Front end</a></li>
 				<?php if($this->usuarioLogueado): ?>
 				<li><a href="<?php echo $this->baseUrl ?>/backend/">Back end</a></li>
-				<?php endif; ?>
-				<li><a href="<?php echo $this->baseUrl ?>/frontend/login/login">Login</a></li>
 				<li class="tit"><a href="<?php echo $this->baseUrl ?>/frontend/login/logout">Salir</a></li>
+				<?php else: ?>
+				<li><a href="<?php echo $this->baseUrl ?>/frontend/login/login">Login</a></li>
+				<?php endif; ?>
+
 			</ul>
 		</div>
