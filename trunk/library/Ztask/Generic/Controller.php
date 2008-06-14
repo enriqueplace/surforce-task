@@ -14,6 +14,7 @@ abstract class Ztask_Generic_Controller extends Zend_Controller_Action
 		$auth = Zend_Auth::getInstance ();
 		if ($auth->hasIdentity ()) {
 			$this->view->usuarioLogueado = true;
+			$this->view->role = $auth->getIdentity()->role;
 		}
 	}
 }
