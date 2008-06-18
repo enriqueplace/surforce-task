@@ -7,7 +7,7 @@ class Frontend_IndexController extends Ztask_Generic_Controller{
 		$tasks = new Tasks();
 		$where = array();
 		$order = "";
-		$this->view->tasks = $tasks->getAll($where, $order);
+		$this->view->tasks = $tasks->fetchAll($where, $order);
 		$this->view->base_path = Zend_Registry::get('base_path');
 		$this->render();
 	}
