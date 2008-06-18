@@ -32,12 +32,14 @@ $config_app = new Zend_Config_Ini('./application/config_app.ini');
 
 // Permite registra de forma pública las instancias de estas variables de
 // configuración
-$registry = Zend_Registry::getInstance();
+$acl = new Ztask_Acl(Zend_Auth::getInstance());
 
+$registry = Zend_Registry::getInstance();
 $registry->set('config_sys', $config_sys);
 $registry->set('config_app', $config_app);
 $registry->set('base_path', realpath('.') );
 $registry->set('debug', $config_sys->debug);
+$registry->set('Zend_Acl', $acl );
 
 // Start Session
 $session = new Zend_Session_Namespace('surforce-task');
@@ -74,7 +76,9 @@ date_default_timezone_set('America/Montevideo');
  *
  */
 $controller = Zend_Controller_Front::getInstance();
-$controller->setControllerDirectory('./application/default/controllers');
+$controller->setControllerDirectory('./application/default/controllers')
+			->registerPlugin( new Ztask_Acl_Plugins_Auth() )
+			->throwExceptions( true );
 
 /*
  * Todos los módulos que se creen dentro de nuestra aplicación deben de tener
