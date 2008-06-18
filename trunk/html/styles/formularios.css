@@ -1,20 +1,21 @@
 form{
-	margin: 0; 
+	margin: 0;
 	padding: 0;
 	color:#888;
 }
 form{
-	border-bottom: 1px solid #a8a9ac;
+	#border-bottom: 1px solid #a8a9ac;
 }
 form label{
 	position: relative;
 }
 form input{
-	font: 8pt Tahoma;	
+	font: 8pt Tahoma;
 	border: 1px solid #a8a9ac;
 	padding: 2px;
 	position: relative;
 	color: #888;
+	width: 200px;
 }
 form textarea{
 	font: 8pt Tahoma;
@@ -22,13 +23,13 @@ form textarea{
 	height: 200px;
 	border: 1px solid #a8a9ac;
 	padding: 2px;
-	color: #888;	
+	color: #888;
 }
 form select{
 	font: 8pt Tahoma;
 	border: 1px solid #a8a9ac;
 	padding: 2px;
-	color: #888;	
+	color: #888;
 }
 form input.submit	{
 	background: #f0f0f0;
