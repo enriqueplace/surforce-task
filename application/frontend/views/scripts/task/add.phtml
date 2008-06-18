@@ -1,0 +1,41 @@
+<div id="main">
+	<form method="POST" action="" id ="add_task" name="add_task">
+		<table>
+			<tr>
+				<td>
+					<label for="task_name">Task name: </lablel>
+				</td>
+				<td>
+					<input type="input" name="task_name" value="Here comes the tastk name">
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<label for="taask_desc">Task description: </lablel>
+				</td>
+				<td>
+					<input type="input" name="task_desc" value="Here comes the tastk description">
+				</td>
+			</tr>
+			<tr>
+				<td>
+				To:
+				</td>
+				<td>
+					<select name="task_to_department">
+					<option value="0" selected>Seleccione una opcion</option>
+
+				    <?php foreach( $this->departments as $dept) : ?>
+				    <option value ="<?php echo $dept->id_departamento ?>"><?php echo $dept->nombre ?></option>
+				    <?php endforeach; ?>
+				    </select>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2">
+					<input type="submit" name="Add">
+				</td>
+			</tr>
+		</table>
+	</form>
+</div>

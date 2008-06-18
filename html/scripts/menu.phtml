@@ -1,13 +1,15 @@
-		<div id="menu">
-			<ul>
-				<li class="tit">Menú de ejemplo</li>
-				<li><a href="<?php echo $this->baseUrl ?>/frontend/">Front end</a></li>
-				<?php if($this->usuarioLogueado): ?>
-				<li><a href="<?php echo $this->baseUrl ?>/backend/">Back end</a></li>
-				<li class="tit"><a href="<?php echo $this->baseUrl ?>/frontend/login/logout">Salir</a></li>
-				<?php else: ?>
-				<li><a href="<?php echo $this->baseUrl ?>/frontend/login/login">Login</a></li>
-				<?php endif; ?>
+<div id="menu">
+	<ul>
+		<li class="tit">Menú de ejemplo</li>
+		<!-- <li><a href="<?php echo $this->baseUrl ?>/frontend/">Front end</a></li> -->
+		<?php if($this->usuarioLogueado): ?>
+			<li><a href="<?php echo $this->baseUrl ?>/frontend/task">List Tasks</a></li>
+			<li><a href="<?php echo $this->baseUrl ?>/frontend/task/add">Add Task</a></li>
+			<!-- <li><a href="<?php echo $this->baseUrl ?>/backend/">Back end</a></li> -->
+			<li><a href="<?php echo $this->baseUrl ?>/frontend/login/logout">Salir</a></li>
+		<?php else: ?>
+		<li><a href="<?php echo $this->baseUrl ?>/frontend/login/login">Login</a></li>
+		<?php endif; ?>
 
-			</ul>
-		</div>
+	</ul>
+</div>

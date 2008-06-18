@@ -6,6 +6,10 @@
 table {
 	width: 95%;
 	margin: 10px;
+	padding: 2px;
+}
+tr, td{
+	border: 1px solid #a8a9ac;
 }
 
 img {
@@ -75,7 +79,7 @@ div#paginado	{
 	padding: 5px 0;
 	color: #888;
 	border-top: 1px solid #ccc;
-	border-bottom: 1px solid #ccc;			
+	border-bottom: 1px solid #ccc;
 	background: #fcfcfc;
 }
 
@@ -86,7 +90,6 @@ div#paginado a.pagactual{
 	font-weight: bold;
 }
 
-		
-		
-		
-		
+
+
+
