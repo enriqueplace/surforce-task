@@ -3,16 +3,24 @@
 	<!-- Task added by: <?php #$this->task->task_added_by ?><br/> -->
 	Task from department: <?php echo $this->task->departamento_origen ?><br/>
 	Task to department: <?php echo $this->task->departamento_destino ?><br/>
-
+	<!-- Working users:
+	<?php foreach($this->working_users as $wk) {
+		echo $wk->usuario_nombre." ".$wk->usuario_apellido.", ";
+	}
+	?> -->
 	Task Comments:<br/>
 	<?php
-	foreach($this->task_comments as $comentario){
-		$user = $this->users->fetchRow("id_usuario = ".$comentario->id_usuario);
-		echo "<i><b>".$user->nombre." ".$user->apellido."</b> said:</i><br/>";
-		echo $comentario->comentario;
-		echo "<br/>";
-		echo "-------------------------------------";
-		echo "<br/>";
+	if($this->task_comments){
+		foreach($this->task_comments as $comentario){
+			$user = $this->users->fetchRow("id_usuario = ".$comentario->id_usuario);
+			echo "<i><b>".$user->nombre." ".$user->apellido."</b> said:</i><br/>";
+			echo $comentario->comentario;
+			echo "<br/>";
+			echo "-------------------------------------";
+			echo "<br/>";
+		}
+	} else {
+		echo "This task has no comments.";
 	}
 	?><br/>
 </div>
