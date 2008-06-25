@@ -12,16 +12,16 @@ div#header{
 	width: 100%;
 }
 div#menu{
+	width:9%;
 	float:left;
-	width:150px;
 	height:600px;
 	border-right: 1px solid #a8a9ac;
 	border-left: 1px solid #a8a9ac;
 	border-top: 1px solid #a8a9ac;
 }
 div#main{
-	width: 50%;
-	float: left;
+	width:90%;
+	float: right;
 	padding: 10px 0 0 5px;
 	margin-bottom: 20px;
 	border-top: 1px solid #a8a9ac
