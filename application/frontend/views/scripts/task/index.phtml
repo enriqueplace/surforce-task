@@ -22,7 +22,7 @@
 	          <td><?php echo $task->departamento_destino ?></td>
 	          <td><?php echo $task->tarea_inicio ?></td>
 	          <td><?php echo $task->tarea_fin ?></td>
-	          <td><a href="#"><?php echo $task->tarea_estado ?></a></td>
+	          <td><a href="<?php echo $this->baseUrl; ?>/frontend/task/view/id/<?php echo $task->tarea_id; ?>"><?php echo $task->tarea_estado ?></a></td>
 	        </tr>
 	    <?php endforeach; ?>
 	</table>
