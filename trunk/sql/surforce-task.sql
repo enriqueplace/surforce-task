@@ -112,6 +112,15 @@ CREATE TABLE `tareas_usuarios_roles` (
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- ----------------------------
+-- Table structure for tareas_comentarios
+-- ----------------------------
+CREATE TABLE `tareas_comentarios` (
+  `tarea_id` mediumint(9) NOT NULL,
+  `id_usuario` mediumint(9) NOT NULL,
+  `comentario` varchar(255) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+-- ----------------------------
 -- View structure for tareas_listado
 -- ----------------------------
 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `tareas_listado` AS select `tt`.`id_tarea` AS `tarea_id`,`tt`.`fecha_inicio` AS `tarea_inicio`,`tt`.`fecha_fin` AS `tarea_fin`,`tt`.`nombre` AS `tarea_nombre`,`tt`.`descripcion` AS `tarea_descripcion`,`ttd`.`id_departamento_origen` AS `id_departamento_origen`,(select `td`.`nombre` AS `nombre` from `tareas_departamentos` `td` where (`td`.`id_departamento` = `ttd`.`id_departamento_origen`)) AS `departamento_origen`,`ttd`.`id_departamento_origen` AS `id_departamento_destino`,(select `td`.`nombre` AS `nombre` from `tareas_departamentos` `td` where (`td`.`id_departamento` = `ttd`.`id_departamento_destino`)) AS `departamento_destino`,`tet`.`id_estado_tarea` AS `id_tarea_estado`,`tet`.`nombre` AS `tarea_estado` from (((`tareas_tareas` `tt` join `tareas_tareas_departamentos` `ttd` on((`tt`.`id_tarea` = `ttd`.`id_tarea`))) join `tareas_tareas_estados` `tte` on((`tte`.`id_tarea` = `tt`.`id_tarea`))) join `tareas_estados_tareas` `tet` on((`tet`.`id_estado_tarea` = `tte`.`id_estado_tarea`)));
@@ -138,3 +147,6 @@ INSERT INTO `tareas_tareas_usuarios` VALUES ('1', '1');
 INSERT INTO `tareas_usuarios` VALUES ('1', 'Pedro', 'Gomez', 'admin', 'admin', 'admin', '1');
 INSERT INTO `tareas_usuarios` VALUES ('2', 'Federico', 'Autuori', 'member', 'member', 'member', '1');
 INSERT INTO `tareas_usuarios_departamentos` VALUES ('1', '4', '1');
+INSERT INTO `tareas_comentarios` VALUES ('1', '1', 'Tarea de prueba');
+INSERT INTO `tareas_comentarios` VALUES ('1', '1', 'Este es otro comentario');
+INSERT INTO `tareas_comentarios` VALUES ('1', '2', 'Y ahora que hacemos??');
