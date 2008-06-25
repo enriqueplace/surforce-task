@@ -6,11 +6,13 @@
 	<h4>Listado de tareassss</h4>
 	<table>
 			<tr class="header">
-	          <td>Name</td>
+	          <td>Nombre</td>
 	          <td>Desc.</td>
-	          <td>From</td>
-	          <td>To</td>
-	          <td>Status</td>
+	          <td>Origen</td>
+	          <td>Destino</td>
+	          <td>Inicio</td>
+	          <td>Fin</td>
+	          <td>Estado</td>
 	        </tr>
 	    <?php foreach( $this->tasks as $task ) : ?>
 	        <tr>
@@ -18,7 +20,9 @@
 	          <td><?php echo $task->tarea_descripcion ?></td>
 	          <td><?php echo $task->departamento_origen ?></td>
 	          <td><?php echo $task->departamento_destino ?></td>
-	          <td><?php echo $task->tarea_estado ?></td>
+	          <td><?php echo $task->tarea_inicio ?></td>
+	          <td><?php echo $task->tarea_fin ?></td>
+	          <td><a href="#"><?php echo $task->tarea_estado ?></a></td>
 	        </tr>
 	    <?php endforeach; ?>
 	</table>
