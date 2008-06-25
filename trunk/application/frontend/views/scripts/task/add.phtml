@@ -19,6 +19,20 @@
 			</tr>
 			<tr>
 				<td>
+				From:
+				</td>
+				<td>
+					<select name="task_from_department">
+					<option value="0" selected>Seleccione una opcion</option>
+
+				    <?php foreach( $this->departments as $dept) : ?>
+				    <option value ="<?php echo $dept->id_departamento ?>"><?php echo $dept->nombre ?></option>
+				    <?php endforeach; ?>
+				    </select>
+				</td>
+			</tr>
+			<tr>
+				<td>
 				To:
 				</td>
 				<td>

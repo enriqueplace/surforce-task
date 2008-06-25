@@ -23,11 +23,15 @@ class Frontend_TaskController extends Ztask_Generic_Controller{
 			$filter = new Zend_Filter_StripTags();
 			$nombre = trim($filter->filter($this->_request->getPost('task_name')));
 			$descripcion = trim($filter->filter($this->_request->getPost('task_desc')));
+			$dep_from = $this->_request->getPost('task_from_department');
+			$dep_to = $this->_request->getPost('task_to_department');
 			$data = array(
-				'nombre' => $nombre,
-				'descripcion' => $descripcion,
+				'task_name' => $nombre,
+				'task_desc' => $descripcion,
+				'id_depart_from' => $dep_from,
+				'id_depart_to' => $dep_to
 			);
-			$tasks->insert($data);
+			$tasks->add($data);
 		}
 		$where = array("estado = 1");
 		$order = "";

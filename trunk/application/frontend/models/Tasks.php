@@ -1,5 +1,5 @@
 <?php
-class Tasks extends Zend_Db_Table{
+class Tasks extends Zend_Db_Table_Abstract{
 	protected $_name = 'tareas_listado';
 	protected $_primary = 'tarea_id';
 
@@ -18,11 +18,23 @@ class Tasks extends Zend_Db_Table{
 			'nombre'      => $task_name,
 			'descripcion' => $task_desc,
 		);
-		$this->insert('tareas_tareas', $tarea);
+		$this->_name = "tareas_tareas";
+		$id_tarea = $this->insert($tarea);
 
-		#$idTarea = $this->lastInsertId();
+		$tareaDep = array(
+			'id_tarea' => $id_tarea,
+			'id_departamento_origen'      => $id_depart_from,
+			'id_departamento_destino' => $id_depart_to,
+		);
+		$this->_name = "tareas_tareas_departamentos";
+		$this->insert($tareaDep);
 
-		#$tareaEstado = array ();
+		$tareaEstado = array(
+			'id_tarea' => $id_tarea,
+			'id_estado_tarea' => '1'
+		);
+		$this->_name = "tareas_tareas_estados";
+		$this->insert($tareaEstado);
 	}
 }
 ?>
