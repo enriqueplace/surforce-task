@@ -4,7 +4,7 @@ Source Host: localhost
 Source Database: surforce-task
 Target Host: localhost
 Target Database: surforce-task
-Date: 18/06/2008 12:31:16 a.m.
+Date: 24/06/2008 10:22:49 p.m.
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -45,8 +45,10 @@ CREATE TABLE `tareas_tareas` (
   `id_tarea` mediumint(9) NOT NULL auto_increment,
   `nombre` varchar(150) collate latin1_general_ci NOT NULL,
   `descripcion` char(255) collate latin1_general_ci NOT NULL,
+  `fecha_inicio` date NOT NULL,
+  `fecha_fin` date NOT NULL,
   PRIMARY KEY  (`id_tarea`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=12 DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 
 -- ----------------------------
 -- Table structure for tareas_tareas_departamentos
@@ -112,7 +114,7 @@ CREATE TABLE `tareas_usuarios_roles` (
 -- ----------------------------
 -- View structure for tareas_listado
 -- ----------------------------
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `tareas_listado` AS select `tt`.`id_tarea` AS `tarea_id`,`tt`.`nombre` AS `tarea_nombre`,`tt`.`descripcion` AS `tarea_descripcion`,`ttd`.`id_departamento_origen` AS `id_departamento_origen`,(select `td`.`nombre` AS `nombre` from `tareas_departamentos` `td` where (`td`.`id_departamento` = `ttd`.`id_departamento_origen`)) AS `departamento_origen`,`ttd`.`id_departamento_origen` AS `id_departamento_destino`,(select `td`.`nombre` AS `nombre` from `tareas_departamentos` `td` where (`td`.`id_departamento` = `ttd`.`id_departamento_destino`)) AS `departamento_destino`,`tet`.`id_estado_tarea` AS `id_tarea_estado`,`tet`.`nombre` AS `tarea_estado` from (((`tareas_tareas` `tt` join `tareas_tareas_departamentos` `ttd` on((`tt`.`id_tarea` = `ttd`.`id_tarea`))) join `tareas_tareas_estados` `tte` on((`tte`.`id_tarea` = `tt`.`id_tarea`))) join `tareas_estados_tareas` `tet` on((`tet`.`id_estado_tarea` = `tte`.`id_estado_tarea`)));
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `tareas_listado` AS select `tt`.`id_tarea` AS `tarea_id`,`tt`.`fecha_inicio` AS `tarea_inicio`,`tt`.`fecha_fin` AS `tarea_fin`,`tt`.`nombre` AS `tarea_nombre`,`tt`.`descripcion` AS `tarea_descripcion`,`ttd`.`id_departamento_origen` AS `id_departamento_origen`,(select `td`.`nombre` AS `nombre` from `tareas_departamentos` `td` where (`td`.`id_departamento` = `ttd`.`id_departamento_origen`)) AS `departamento_origen`,`ttd`.`id_departamento_origen` AS `id_departamento_destino`,(select `td`.`nombre` AS `nombre` from `tareas_departamentos` `td` where (`td`.`id_departamento` = `ttd`.`id_departamento_destino`)) AS `departamento_destino`,`tet`.`id_estado_tarea` AS `id_tarea_estado`,`tet`.`nombre` AS `tarea_estado` from (((`tareas_tareas` `tt` join `tareas_tareas_departamentos` `ttd` on((`tt`.`id_tarea` = `ttd`.`id_tarea`))) join `tareas_tareas_estados` `tte` on((`tte`.`id_tarea` = `tt`.`id_tarea`))) join `tareas_estados_tareas` `tet` on((`tet`.`id_estado_tarea` = `tte`.`id_estado_tarea`)));
 
 -- ----------------------------
 -- Records
@@ -124,9 +126,14 @@ INSERT INTO `tareas_departamentos` VALUES ('4', 'AdministraciÃ³n', '1');
 INSERT INTO `tareas_estados_tareas` VALUES ('1', 'Sin asignar', '1');
 INSERT INTO `tareas_estados_tareas` VALUES ('2', 'Asignada', '1');
 INSERT INTO `tareas_estados_tareas` VALUES ('3', 'Terminada', '1');
-INSERT INTO `tareas_tareas` VALUES ('1', 'Hacer admin tareas', 'Crear el administrador de tareas.');
+INSERT INTO `tareas_tareas` VALUES ('1', 'Hacer admin tareas', 'Crear el administrador de tareas.', '2008-01-01', '2008-01-10');
+INSERT INTO `tareas_tareas` VALUES ('10', 'Here comes the tastk name', 'Here comes the tastk description', '2008-01-01', '2008-01-10');
+INSERT INTO `tareas_tareas` VALUES ('11', 'Here comes the tastk name', 'Here comes the tastk description', '2008-01-01', '2008-01-10');
 INSERT INTO `tareas_tareas_departamentos` VALUES ('1', '1', '2');
+INSERT INTO `tareas_tareas_departamentos` VALUES ('10', '1', '1');
+INSERT INTO `tareas_tareas_departamentos` VALUES ('11', '4', '4');
 INSERT INTO `tareas_tareas_estados` VALUES ('1', '2');
+INSERT INTO `tareas_tareas_estados` VALUES ('11', '1');
 INSERT INTO `tareas_tareas_usuarios` VALUES ('1', '1');
 INSERT INTO `tareas_usuarios` VALUES ('1', 'Pedro', 'Gomez', 'admin', 'admin', 'admin', '1');
 INSERT INTO `tareas_usuarios` VALUES ('2', 'Federico', 'Autuori', 'member', 'member', 'member', '1');
