@@ -44,6 +44,7 @@ class Frontend_TaskController extends Ztask_Generic_Controller{
 	{
 		Zend_Loader::loadClass('Comments', self::MODELS_DIR );
 		Zend_Loader::loadClass('Tasks', self::MODELS_DIR );
+		Zend_Loader::loadClass('TasksUsers', self::MODELS_DIR );
 		Zend_Loader::loadClass('Users', self::MODELS_DIR );
 		$id_tarea = $this->_request->getParam('id');
 		$tasks = new Tasks();
@@ -55,11 +56,15 @@ class Frontend_TaskController extends Ztask_Generic_Controller{
 		$where = array("tarea_id = $id_tarea");
 		$comentarios = $comments->fetchAll($where);
 
+		$task_users = new TasksUsers();
+		$working_users = $task_users->fetchAll("id_tarea = $id_tarea");
+		
 		$users = new Users();
 
 		$this->view->task = $tareas;
 		$this->view->task_comments = $comentarios;
 		$this->view->users = $users;
+		$this->view->working_users = $working_users;
 	}
 }
 ?>
