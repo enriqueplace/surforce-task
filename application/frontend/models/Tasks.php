@@ -2,7 +2,6 @@
 class Tasks extends Zend_Db_Table_Abstract{
 	protected $_name = 'tareas_listado';
 	protected $_primary = 'tarea_id';
-
 	public function add($data = null)
 	{
 		if(!is_array($data)){
