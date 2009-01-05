@@ -8,7 +8,7 @@ class Frontend_LoginController extends Ztask_Generic_Controller
     function logoutAction()
     {
         Zend_Auth::getInstance()->clearIdentity();
-        $this->_redirect('/frontend');
+        $this->_redirect('/');
     }
     function loginAction()
     {
