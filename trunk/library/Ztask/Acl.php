@@ -16,4 +16,3 @@ class Ztask_Acl extends Zend_Acl
         $this->allow( 'admin');
     }
 }
-?>
