@@ -1,16 +1,16 @@
 <?php
 class Frontend_LoginController extends Ztask_Generic_Controller
 {
-    function indexAction()
+    public function indexAction()
     {
         $this->_redirect('/frontend');
     }
-    function logoutAction()
+    public function logoutAction()
     {
         Zend_Auth::getInstance()->clearIdentity();
         $this->_redirect('/');
     }
-    function loginAction()
+    public function loginAction()
     {
         //$info = Zend_Registry::get('personalizacion');
         $this->view->message = '';
@@ -31,6 +31,7 @@ class Frontend_LoginController extends Ztask_Generic_Controller
 
                 $dbAdapter = Zend_Registry::get('dbAdapter');
                 $autAdapter = new Zend_Auth_Adapter_DbTable($dbAdapter);
+
                 $autAdapter->setTableName('tareas_usuarios');
                 $autAdapter->setIdentityColumn('email');
                 $autAdapter->setCredentialColumn('password');
@@ -42,12 +43,14 @@ class Frontend_LoginController extends Ztask_Generic_Controller
                 $autAdapter->setIdentity($usuario);
                 $autAdapter->setCredential($password);
 
-                $aut = Zend_Auth::getInstance();
+                $aut    = Zend_Auth::getInstance();
                 $result = $aut->authenticate($autAdapter);
 
                 if ($result->isValid()) {
+
                     $data = $autAdapter->getResultRowObject(null, 'password');
                     $aut->getStorage()->write($data);
+
                     $this->_redirect('/frontend');
                 } else {
                     $this->view->message = $info->sitio->autenticacion->login->msgUserPassIncorrectos;
@@ -58,4 +61,3 @@ class Frontend_LoginController extends Ztask_Generic_Controller
         $this->render();
     }
 }
-?>
